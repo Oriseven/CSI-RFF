@@ -75,7 +75,7 @@ clearvars -except fingerprints data scores_iforest scores_lof scores_ocsvm score
 %% authentication results
 distance={'Euclidean_distance','Manhattan_distance','Chebyshev_distance','Euclidean_angle','Hermitian_angle'};
 ND = 'knn'; %'iforest','lof','ocsvm','knn'
-op_far=1; % set false alarm rate / false reject rate; 
+op_far=1; % set false alarm rate / false reject rate; op_far = 0 is not support, please replace 0 with a small number like 0.0001
 for env = 1:2 % 1 for static; 2 for  mobile
     disp(['-------------env:   ', num2str(env), '--------------']);
     for dis = 2
