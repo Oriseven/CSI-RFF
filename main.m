@@ -2,7 +2,7 @@
 %% =====================================================================================
 %%       Filename:  main.m 
 %%
-%%    Description:  CSI-RFF implementation for 'iforest','lof','ocsvm','ocsvm','knn' algorithems
+%%    Description:  CSI-RFF implementation for 'iforest','lof','ocsvm','knn' algorithms
 %%
 %%         Author:  Ruiqi Kong 
 %%         Email :  <kr020@ie.cuhk.edu.hk>
@@ -59,12 +59,12 @@ for env = 1:size(test_enviroment,2)
                 test_xdata=cat(1,test_xdata,f);
                 test_xdata=cat(2,real(test_xdata),imag(test_xdata));
 
-            if dis==1
-               scores_iforest{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'iforest');
-            end
-            scores_lof{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'lof',dis);
-            
-            scores_ocsvm{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'ocsvm',dis);
+%             if dis==1
+%                scores_iforest{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'iforest');
+%             end
+%             scores_lof{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'lof',dis);
+%             
+%             scores_ocsvm{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'ocsvm',dis);
              
             scores_knn{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'knn',dis);
             end
@@ -74,9 +74,9 @@ end
 clearvars -except fingerprints data scores_iforest scores_lof scores_ocsvm scores_knn;
 %% authentication results
 distance={'Euclidean_distance','Manhattan_distance','Chebyshev_distance','Euclidean_angle','Hermitian_angle'};
-ND = 'knn'; %'iforest','lof','ocsvm','ocsvm','knn'
+ND = 'knn'; %'iforest','lof','ocsvm','knn'
 op_far=1; % set false alarm rate / false reject rate; 
-for env = 1:2
+for env = 1:2 % 1 for static; 2 for  mobile
     disp(['-------------env:   ', num2str(env), '--------------']);
     for dis = 2
         eval(['scores = scores_' ND ';']);

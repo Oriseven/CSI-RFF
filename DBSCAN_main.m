@@ -2,7 +2,7 @@
 %% =====================================================================================
 %%       Filename:  DBSCAN_main.m 
 %%
-%%    Description:  CSI-RFF implementation for DBSCAN algorithems
+%%    Description:  CSI-RFF implementation for DBSCAN algorithm
 %%
 %%         Author:  Ruiqi Kong 
 %%         Email :  <kr020@ie.cuhk.edu.hk>
@@ -24,7 +24,6 @@ load("CSI_data.mat");
 % ["RoomA_static","RoomA_static","RoomA_mobile","RoomA_mobile","RoomB_static","RoomB_static","RoomB_mobile","RoomB_mobile"];
 
 %% fingerprint construction
-% Initialize CSI fingerprint extractor
 N_csi = 20; % the number of CSI measurements used for fingerprint construction
 N_rx = 1:4; % used rx chains
 enable_oe = 1; % enable outlier elimination. (Algorithm 1 in CSI-RFF paper)
@@ -38,7 +37,7 @@ clearvars -except fingerprints;
 data=struct2cell(fingerprints.devices);
 for i=1:length(data)
     for j= 1:length(data{i,1}{1,1})
-        data{i,1}{1,1}{1,j}=zscore((data{i,1}{1,1}{1,j}),[],4);%.*exp(i.*zscore(angle(data{i,1}{1,j}{1,z}),[],4));
+        data{i,1}{1,1}{1,j}=zscore((data{i,1}{1,1}{1,j}),[],4);
     end
 end
 clearvars -except fingerprints data;
@@ -126,7 +125,6 @@ for env = 1:size(test_enviroment,2)
 
     end
 end
-
 
 %% distance
 function D=Euclidean_distance(Y,X)
