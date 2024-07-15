@@ -1,5 +1,5 @@
 %%
-%% =====================================================================================
+%% ===================================================================================== 
 %%       Filename:  main.m 
 %%
 %%    Description:  CSI-RFF implementation for 'iforest','lof','ocsvm','knn' algorithms
@@ -59,12 +59,12 @@ for env = 1:size(test_enviroment,2)
                 test_xdata=cat(1,test_xdata,f);
                 test_xdata=cat(2,real(test_xdata),imag(test_xdata));
 
-%             if dis==1
-%                scores_iforest{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'iforest');
-%             end
-%             scores_lof{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'lof',dis);
-%             
-%             scores_ocsvm{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'ocsvm',dis);
+            if dis==1
+               scores_iforest{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'iforest');
+            end
+            scores_lof{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'lof',dis);
+            
+            scores_ocsvm{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'ocsvm',dis);
              
             scores_knn{dis,env,test_device,legal}=novelty_detection(train_xdata,test_xdata,'knn',dis);
             end
